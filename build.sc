@@ -44,7 +44,7 @@ object modules extends Module {
       ivy"ch.qos.logback:logback-classic:${deps.logbackVersion}"
     )
 
-    object test extends ScalaTests {
+    object test extends ScalaTests with ScalafixModule {
       def ivyDeps = Agg(
         ivy"com.disneystreaming::weaver-cats:${deps.weaverVersion}",
         ivy"com.disneystreaming::weaver-discipline:${deps.weaverVersion}",

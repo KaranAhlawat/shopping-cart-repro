@@ -1,49 +1,33 @@
 package test.it.storage
 
-import suite.ResourceSuite
-import org.typelevel.log4cats.noop.NoOpLogger
+import shop.auth.{Crypto, JwtExpire, Tokens}
+import shop.config.types.*
+import shop.domain.ID
+import shop.domain.auth.*
+import shop.domain.brand.{Brand, BrandName}
+import shop.domain.cart.Cart
+import shop.domain.category.{Category, CategoryName}
+import shop.domain.item.*
+import shop.generators.*
+import shop.http.auth.auth.{UserJwtAuth, UserWithPassword}
+import shop.services.*
+
 import cats.effect.IO
+import cats.effect.kernel.{Ref, Resource}
 import cats.syntax.all.*
-import dev.profunktor.redis4cats.RedisCommands
-import cats.effect.kernel.Resource
-import dev.profunktor.redis4cats.Redis
-import org.typelevel.log4cats.Logger
+import dev.profunktor.auth.jwt.{JwtAuth, JwtToken, jwtDecode}
 import dev.profunktor.redis4cats.log4cats.*
-import shop.config.types.ShoppingCartExpiration
-import scala.concurrent.duration.*
-import shop.domain.item.ItemId
-import shop.domain.item.Item
-import shop.services.Items
-import cats.effect.kernel.Ref
+import dev.profunktor.redis4cats.{Redis, RedisCommands}
 import io.github.iltotore.iron.*
 import io.github.iltotore.iron.cats.given
-import shop.domain.brand.BrandName
-import shop.domain.item.UpdateItem
-import shop.domain.item.CreateItem
-import shop.domain.ID
-import shop.domain.brand.Brand
-import shop.domain.category.Category
-import shop.domain.category.CategoryName
-import shop.config.types.TokenExpiration
-import pdi.jwt.JwtClaim
-import dev.profunktor.auth.jwt.JwtAuth
-import pdi.jwt.JwtAlgorithm
-import shop.config.types.*
-import shop.http.auth.auth.UserJwtAuth
-import shop.generators.*
-import shop.services.ShoppingCart
-import shop.domain.cart.Cart
-import shop.domain.auth.*
-import shop.http.auth.auth.UserWithPassword
-import shop.services.Users
+import org.typelevel.log4cats.Logger
+import org.typelevel.log4cats.noop.NoOpLogger
+import pdi.jwt.{JwtAlgorithm, JwtClaim}
+import suite.ResourceSuite
+
+import scala.concurrent.duration.*
+
 import java.util.UUID
-import shop.auth.JwtExpire
-import shop.auth.Tokens
-import shop.auth.Crypto
-import shop.services.Auth
-import shop.services.UsersAuth
-import dev.profunktor.auth.jwt.JwtToken
-import dev.profunktor.auth.jwt.jwtDecode
 
 object RedisSuite extends ResourceSuite:
   given Logger[IO] = NoOpLogger[IO]

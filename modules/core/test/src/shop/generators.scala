@@ -1,22 +1,19 @@
 package shop
 
-import shop.domain.auth.{UserId, UserName}
+import shop.domain.auth._
 import shop.domain.brand.{Brand, BrandId, BrandName}
 import shop.domain.cart.*
 import shop.domain.category.{Category, CategoryId, CategoryName}
+import shop.domain.checkout.*
 import shop.domain.item.*
 import shop.domain.order.{OrderId, PaymentId}
+import shop.domain.payment.Payment
+import shop.http.auth.auth.{CommonUser, User}
 
 import org.scalacheck.Gen
 import squants.market.{INR, Money}
 
 import java.util.UUID
-import shop.domain.checkout.*
-import shop.http.auth.auth.User
-import shop.http.auth.auth.CommonUser
-import shop.domain.payment.Payment
-import shop.domain.auth.EncryptedPassword
-import shop.domain.auth.Password
 
 object generators:
   val nonEmptyStringGen: Gen[String] =

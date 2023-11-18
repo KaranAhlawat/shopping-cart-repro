@@ -4,8 +4,8 @@ import cats.effect.IO
 import cats.implicits.*
 import io.circe.*
 import io.circe.syntax.*
-import org.http4s.{Status as HttpStatus, *}
 import org.http4s.circe.*
+import org.http4s.{Status as HttpStatus, *}
 import weaver.scalacheck.Checkers
 import weaver.{Expectations, SimpleIOSuite}
 

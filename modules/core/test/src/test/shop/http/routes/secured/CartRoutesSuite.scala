@@ -3,15 +3,15 @@ package test.shop.http.routes.secured
 import shop.domain.auth.UserId
 import shop.domain.cart.{Cart, CartTotal, Quantity}
 import shop.domain.item.ItemId
-import shop.generators.{cartTotalGen, commonUserGen}
+import shop.generators.{cartGen, cartTotalGen, commonUserGen}
 import shop.http.auth.auth.CommonUser
 import shop.http.routes.secured.CartRoutes
 import shop.services.ShoppingCart
 
 import cats.data.Kleisli
 import cats.effect.IO
-import io.github.iltotore.iron.circe.given
 import io.github.iltotore.iron.cats.given
+import io.github.iltotore.iron.circe.given
 import org.http4s.Method.*
 import org.http4s.*
 import org.http4s.circe.CirceEntityEncoder.*
@@ -20,7 +20,6 @@ import org.http4s.server.AuthMiddleware
 import org.http4s.syntax.literals.*
 import squants.market.INR
 import suite.HttpSuite
-import shop.generators.cartGen
 
 object CartRoutesSuite extends HttpSuite:
   def authMiddleware(

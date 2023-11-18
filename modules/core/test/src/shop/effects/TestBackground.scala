@@ -1,9 +1,10 @@
 package shop.effects
 
-import scala.concurrent.duration.FiniteDuration
 import shop.effect.Background
-import cats.effect.IO
-import cats.effect.Ref
+
+import cats.effect.{IO, Ref}
+
+import scala.concurrent.duration.FiniteDuration
 
 object TestBackground:
   val NoOp: Background[IO] =

@@ -3,10 +3,10 @@ package shop.retries
 import cats.effect.IO
 import cats.effect.kernel.Ref
 import cats.syntax.option.*
+import retry.RetryDetails.{GivingUp, WillDelayAndRetry}
 import retry.*
-import retry.RetryDetails.GivingUp
+
 import scala.annotation.nowarn
-import retry.RetryDetails.WillDelayAndRetry
 
 object TestRetry:
 
