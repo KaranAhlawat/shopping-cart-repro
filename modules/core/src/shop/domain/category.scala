@@ -16,8 +16,8 @@ object category:
   opaque type CategoryName = String :| Pure
   object CategoryName extends RefinedTypeOps[String, Pure, CategoryName]
 
-  opaque type CategoryParam = String :| Not[Blank]
-  object CategoryParam extends RefinedTypeOps[String, Not[Blank], CategoryParam]
+  opaque type CategoryParam = String :| ![Blank]
+  object CategoryParam extends RefinedTypeOps[String, ![Blank], CategoryParam]
   extension (x: CategoryParam)
     def toDomain: CategoryName = CategoryName(x.toLowerCase.capitalize.refine)
 

@@ -20,13 +20,13 @@ object auth:
   opaque type EncryptedPassword = String :| Pure
   object EncryptedPassword extends RefinedTypeOps[String, Pure, EncryptedPassword]
 
-  opaque type UserNameParam = String :| Not[Blank]
-  object UserNameParam extends RefinedTypeOps[String, Not[Blank], UserNameParam]
+  opaque type UserNameParam = String :| ![Blank]
+  object UserNameParam extends RefinedTypeOps[String, ![Blank], UserNameParam]
   extension (x: UserNameParam)
     def toDomain: UserName = UserName(x.toLowerCase.refine)
 
-  opaque type PasswordParam = String :| Not[Blank]
-  object PasswordParam extends RefinedTypeOps[String, Not[Blank], PasswordParam]
+  opaque type PasswordParam = String :| ![Blank]
+  object PasswordParam extends RefinedTypeOps[String, ![Blank], PasswordParam]
   extension (x: PasswordParam)
     @targetName("toDomainPasswordParam")
     def toDomain: Password = Password(x.refine)

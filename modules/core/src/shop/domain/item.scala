@@ -44,8 +44,8 @@ object item:
       categoryId: CategoryId
   )
 
-  opaque type ItemNameParam = String :| Not[Blank]
-  opaque type ItemDescriptionParam = String :| Not[Blank]
+  opaque type ItemNameParam = String :| ![Blank]
+  opaque type ItemDescriptionParam = String :| ![Blank]
   opaque type PriceParam = String :| ValidBigDecimal
 
   case class CreateItemParam(

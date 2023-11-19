@@ -17,8 +17,8 @@ object brand:
   opaque type BrandName = String :| Pure
   object BrandName extends RefinedTypeOps[String, Pure, BrandName]
 
-  opaque type BrandParam = String :| Not[Blank]
-  object BrandParam extends RefinedTypeOps[String, Not[Blank], BrandParam]
+  opaque type BrandParam = String :| ![Blank]
+  object BrandParam extends RefinedTypeOps[String, ![Blank], BrandParam]
   extension (x: BrandParam)
     def toDomain: BrandName = BrandName(x.toLowerCase.capitalize.refine)
 
