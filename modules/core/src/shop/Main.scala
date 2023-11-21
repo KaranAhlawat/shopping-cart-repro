@@ -42,7 +42,7 @@ object Main extends IOApp.Simple:
                       clients
                     )
                     val api = HttpApi.make[IO](services, programs, security)
-                    cfg.httpServerConfig -> api.httpApp
+                    (cfg.httpServerConfig, api.httpApp)
               .flatMap: (cfg, httpApp) =>
                 MkHttpServer[IO].newEmber(cfg, httpApp)
               .useForever
