@@ -14,7 +14,7 @@ trait MkHttpServer[F[_]]:
   def newEmber(cfg: HttpServerConfig, httpApp: HttpApp[F]): Resource[F, Server]
 
 object MkHttpServer:
-  def apply[F[_]: MkHttpServer]: MkHttpServer[F] = implicitly
+  def apply[F[_]: MkHttpServer]: MkHttpServer[F] = summon
 
   private def showEmberBanner[F[_]: Logger](s: Server): F[Unit] =
     Logger[F].info(s"\n${Banner.mkString("\n")}\nHTTP Server started at ${s.address}")

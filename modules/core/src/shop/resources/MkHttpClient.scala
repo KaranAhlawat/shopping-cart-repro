@@ -12,7 +12,7 @@ trait MkHttpClient[F[_]]:
   def newEmber(c: HttpClientConfig): Resource[F, Client[F]]
 
 object MkHttpClient:
-  def apply[F[_]: MkHttpClient]: MkHttpClient[F] = implicitly
+  def apply[F[_]: MkHttpClient]: MkHttpClient[F] = summon
 
   implicit def forAsync[F[_]: Async: Network]: MkHttpClient[F] =
     new MkHttpClient[F]:

@@ -1,6 +1,6 @@
 package shop
 
-import shop.domain.auth._
+import shop.domain.auth.*
 import shop.domain.brand.{Brand, BrandId, BrandName}
 import shop.domain.cart.*
 import shop.domain.category.{Category, CategoryId, CategoryName}

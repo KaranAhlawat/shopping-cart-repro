@@ -45,4 +45,5 @@ object Main extends IOApp.Simple:
                     (cfg.httpServerConfig, api.httpApp)
               .flatMap: (cfg, httpApp) =>
                 MkHttpServer[IO].newEmber(cfg, httpApp)
+                MkHttpServer[IO].newEmber(cfg, httpApp)
               .useForever
