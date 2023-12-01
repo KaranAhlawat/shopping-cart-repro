@@ -31,20 +31,16 @@ object AppResources:
     def checkPostgresConnection(
         postgres: Resource[F, Session[F]]
     ): F[Unit] =
-      postgres.use { session =>
-        session.unique(sql"select version();".query(text)).flatMap { v =>
+      postgres.use: session =>
+        session.unique(sql"select version();".query(text)).flatMap: v =>
           Logger[F].info(s"Connected to Postgres $v")
-        }
-      }
 
     def checkRedisConnection(
         redis: RedisCommands[F, String, String]
     ): F[Unit] =
-      redis.info.flatMap {
-        _.get("redis_version").traverse_ { v =>
+      redis.info.flatMap:
+        _.get("redis_version").traverse_ : v =>
           Logger[F].info(s"Connected to Redis $v")
-        }
-      }
 
     def mkPostgreSqlResource(c: PostgreSQLConfig): SessionPool[F] =
       Session
