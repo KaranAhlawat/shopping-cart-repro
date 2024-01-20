@@ -1,6 +1,6 @@
 {
   "files.watcherExclude": {
-    "**/target": true
-  },
-  "metals.serverVersion": "1.1.0"
+		"**/target": true
+	},
+  "metals.serverVersion": "1.2.0"
 }

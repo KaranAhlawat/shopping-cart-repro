@@ -38,7 +38,7 @@ object iron:
           case Right(a) =>
             f(a)
           case Left(e) =>
-            Option(e.getCause) match
+            Option(e.getCause()) match
               case Some(c) =>
                 BadRequest(c.getMessage())
               case _ =>

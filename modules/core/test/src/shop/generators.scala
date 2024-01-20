@@ -9,11 +9,10 @@ import shop.domain.item.*
 import shop.domain.order.{OrderId, PaymentId}
 import shop.domain.payment.Payment
 import shop.http.auth.auth.{CommonUser, User}
-
-import org.scalacheck.Gen
-import squants.market.{INR, Money}
-
 import java.util.UUID
+import org.scalacheck.Gen
+import squants.market.Money
+import squants.market.INR
 
 object generators:
   val nonEmptyStringGen: Gen[String] =

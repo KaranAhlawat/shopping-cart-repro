@@ -20,6 +20,7 @@ val compilerOptions = Seq(
   "-encoding",
   "utf8",
   "-deprecation",
+  "-explain",
   "-explain-types",
   "-feature",
   "-language:higherKinds",
